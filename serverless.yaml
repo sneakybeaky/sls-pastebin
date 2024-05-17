@@ -1,4 +1,4 @@
-service: example-service
+service: pastebin
 
 frameworkVersion: '>=3.0.0'
 
@@ -12,9 +12,9 @@ custom:
   go:
     supportedRuntimes: ["provided.al2"]
     buildProvidedRuntimeAsBootstrap: true
+    cmd: CGO_ENABLED=0 GOARCH=arm64 GOOS=linux go build -tags lambda.norpc -ldflags="-s -w"
   betterCredentials:
     enabled: true
-
 
 plugins:
   - serverless-better-credentials
@@ -23,3 +23,5 @@ plugins:
 functions:
   example:
     handler: ./functions/example/main.go # or just "./functions/example"
+    events:
+      - httpApi: 'GET /example'

@@ -1,15 +1,14 @@
 package main
 
 import (
-	"context"
-
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
-func handler(ctx context.Context) (string, error) {
-	return "hello", nil
+func hello() (string, error) {
+	return "Hello λ!", nil
 }
 
 func main() {
-	lambda.Start(handler)
+	// Make the handler available for Remote Procedure Call by AWS Lambda
+	lambda.Start(hello)
 }
