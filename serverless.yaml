@@ -25,3 +25,12 @@ functions:
     handler: ./functions/example/main.go # or just "./functions/example"
     events:
       - httpApi: 'GET /example'
+
+resources:
+  Resources:
+    IncomingBucket:
+      Type: 'AWS::S3::Bucket'
+      Properties:
+        BucketName: ${aws:accountId}-${sls:stage}-pastebin-incoming
+        VersioningConfiguration:
+          Status: Enabled
