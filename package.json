@@ -1,0 +1,14 @@
+{
+    "devDependencies": {
+        "serverless": "^3.38.0",
+        "serverless-better-credentials": "^2.0.0",
+        "serverless-step-functions": "^3.21.0"
+    },
+    "name": "pastebin",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "sls": "serverless"
+    },
+    "author": "Jon Barber"
+}
