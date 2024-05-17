@@ -1,0 +1,16 @@
+### GET request to example server
+GET {{uploader_url}}
+
+> {%
+    client.global.set("upload_url",response.body.URL )
+%}
+###
+
+PUT {{upload_url}}
+
+{
+  "id": {{$random.uuid}},
+  "price": {{$random.integer()}},
+  "ts": {{$timestamp}},
+  "value": "content"
+}

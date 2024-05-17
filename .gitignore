@@ -2,3 +2,4 @@ node_modules
 .serverless
 .bin
 .idea
+/http-client.private.env.json

@@ -3,6 +3,7 @@
         "serverless": "^3.38.0",
         "serverless-better-credentials": "^2.0.0",
         "serverless-go-plugin": "^2.4.0",
+        "serverless-iam-roles-per-function": "^3.2.0",
         "serverless-step-functions": "^3.21.0"
     },
     "name": "pastebin",

@@ -19,6 +19,7 @@ custom:
 plugins:
   - serverless-better-credentials
   - serverless-go-plugin
+  - serverless-iam-roles-per-function
 
 functions:
   example:
@@ -27,7 +28,22 @@ functions:
       - httpApi: 'GET /example'
   scanner:
     handler: ./functions/scanner
+  uploadurl:
+    handler: ./functions/upload
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - s3:PutObject
+        Resource:
+          Fn::Join:
+            - ""
+            - - !GetAtt IncomingBucket.Arn
+              - /*
 
+    environment:
+      BUCKET: !Ref IncomingBucket
+    events:
+      - httpApi: 'GET /uploadurl'
 
 resources:
   Resources:
