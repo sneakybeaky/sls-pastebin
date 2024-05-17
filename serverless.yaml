@@ -5,12 +5,12 @@ frameworkVersion: '>=3.0.0'
 provider:
   name: aws
   architecture: arm64
-  runtime: provided.al2
+  runtime: provided.al2023
   region: eu-west-2
 
 custom:
   go:
-    supportedRuntimes: ["provided.al2"]
+    supportedRuntimes: ["provided.al2023"]
     buildProvidedRuntimeAsBootstrap: true
     cmd: CGO_ENABLED=0 GOARCH=arm64 GOOS=linux go build -tags lambda.norpc -ldflags="-s -w"
   betterCredentials:
@@ -25,6 +25,9 @@ functions:
     handler: ./functions/example/main.go # or just "./functions/example"
     events:
       - httpApi: 'GET /example'
+  scanner:
+    handler: ./functions/scanner
+
 
 resources:
   Resources:
